@@ -3,7 +3,7 @@ package br.com.whiteduck.entities;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Missile extends GameObject {
-    private static final float SPEED = 5f;
+    private static final float SPEED = 6f;
     private boolean active = true;
 
     public Missile(Texture texture, float x, float y) {

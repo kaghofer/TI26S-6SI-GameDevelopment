@@ -1,5 +1,6 @@
 package br.com.whiteduck;
 
+import br.com.whiteduck.managers.AssetController;
 import br.com.whiteduck.managers.GameManager;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -18,19 +19,24 @@ public class Core implements ApplicationListener {
     private Texture missileTexture;
     private SpriteBatch spriteBatch;
     private FitViewport viewport;
-    private Vector2 touchPos;
     private GameManager gameManager;
+    private AssetController assets;
 
     @Override
     public void create() {
-        backgroundTexture = new Texture("interstellar.jpg");
-        spaceShipTexture = new Texture("spaceShips_009.png");
-        missileTexture = new Texture("spaceMissiles_009.png");
-        rockTexture = new Texture("spaceMeteors_001.png");
+        // Inicializa o controlador de assets
+        assets = AssetController.getInstance();
+
+        assets.loadAllAssets();
+        assets.finishLoading();
+
+        backgroundTexture = assets.get(AssetController.BACKGROUND);
+        spaceShipTexture = assets.get(AssetController.NAVE_TEXTURE);
+        missileTexture = assets.get(AssetController.MISSIL);
+        rockTexture = assets.get(AssetController.METEOROS);
 
         spriteBatch = new SpriteBatch();
         viewport = new FitViewport(8, 5);
-        touchPos = new Vector2();
 
         gameManager = new GameManager(viewport, spaceShipTexture,
             missileTexture, rockTexture);
@@ -53,10 +59,7 @@ public class Core implements ApplicationListener {
         }
 
         // Versão básica - sem feedback visual
-        if (Gdx.input.isTouched()) {
-            touchPos.set(Gdx.input.getX(), Gdx.input.getY());
-            viewport.unproject(touchPos);
-            gameManager.setShipY(touchPos.y);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
             gameManager.createMissile();
         }
     }
@@ -86,10 +89,12 @@ public class Core implements ApplicationListener {
     }
 
     @Override
-    public void pause() {}
+    public void pause() {
+    }
 
     @Override
-    public void resume() {}
+    public void resume() {
+    }
 
     @Override
     public void dispose() {

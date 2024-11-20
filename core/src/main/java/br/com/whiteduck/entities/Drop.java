@@ -1,5 +1,6 @@
 package br.com.whiteduck.entities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 
@@ -7,20 +8,19 @@ public class Drop extends GameObject {
     private static final float SPEED = 2f;
     private boolean active = true;
 
-    public Drop(Texture texture, float worldWidth) {
+    public Drop(Texture texture, float worldHeight) {
         super(texture);
 
-        sprite.setSize(1, 1);
-        sprite.setRotation(180);
-        sprite.setOriginCenter();
+        sprite.setSize(0.5f, 0.5f);
 
-        float x = MathUtils.random(worldWidth / 2, worldWidth - sprite.getWidth());
-        sprite.setPosition(x, 0);
+        float y = MathUtils.random(0,worldHeight - sprite.getWidth());
+        System.out.println(y);
+        sprite.setPosition(8, y);
     }
 
     @Override
     public void update(float delta) {
-        sprite.translateY(SPEED * delta);
+        sprite.translateX(-SPEED * delta);
         updateBounds();
     }
 

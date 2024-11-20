@@ -65,7 +65,7 @@ public class GameManager {
             Drop drop = drops.get(i);
             drop.update(delta);
 
-            if (drop.getY() > viewport.getWorldHeight()) {
+            if (drop.getX() > viewport.getWorldWidth()) {
                 drops.removeIndex(i);
             }
         }
@@ -117,6 +117,6 @@ public class GameManager {
     }
 
     private void createDrop() {
-        drops.add(new Drop(dropTexture, viewport.getWorldWidth()));
+        drops.add(new Drop(dropTexture, viewport.getWorldHeight()));
     }
 }
