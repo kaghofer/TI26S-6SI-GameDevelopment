@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.Texture;
 public class AssetController {
 
     public static final String NAVE_TEXTURE = "spaceShips_009.png";
-    public static final String METEOROS = "spaceMeteors_001.png";
-    public static final String MISSIL = "spaceMissiles_009.png";
-    public static final String BACKGROUND = "interstellar.jpg";
+    public static final String METEOROS_TEXTURE = "spaceMeteors_001.png";
+    public static final String MISSIL_TEXTURE = "spaceMissiles_009.png";
+    public static final String BACKGROUND_TEXTURE = "interstellar.jpg";
     private static AssetController instance;
     private AssetManager manager;
 
@@ -26,18 +26,18 @@ public class AssetController {
     public void loadAllAssets() {
         // Texturas
         manager.load(NAVE_TEXTURE, Texture.class);
-        manager.load(METEOROS, Texture.class);
-        manager.load(MISSIL, Texture.class);
-        manager.load(BACKGROUND, Texture.class);
+        manager.load(METEOROS_TEXTURE, Texture.class);
+        manager.load(MISSIL_TEXTURE, Texture.class);
+        manager.load(BACKGROUND_TEXTURE, Texture.class);
 
     }
 
     public void loadGamePlayAssets() {
         // Carrega assets específicos da gameplay
         manager.load(NAVE_TEXTURE, Texture.class);
-        manager.load(METEOROS, Texture.class);
-        manager.load(MISSIL, Texture.class);
-        manager.load(BACKGROUND, Texture.class);
+        manager.load(METEOROS_TEXTURE, Texture.class);
+        manager.load(MISSIL_TEXTURE, Texture.class);
+        manager.load(BACKGROUND_TEXTURE, Texture.class);
     }
 
     public boolean isLoaded(String fileName) {

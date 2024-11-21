@@ -8,7 +8,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
@@ -30,10 +29,10 @@ public class Core implements ApplicationListener {
         assets.loadAllAssets();
         assets.finishLoading();
 
-        backgroundTexture = assets.get(AssetController.BACKGROUND);
+        backgroundTexture = assets.get(AssetController.BACKGROUND_TEXTURE);
         spaceShipTexture = assets.get(AssetController.NAVE_TEXTURE);
-        missileTexture = assets.get(AssetController.MISSIL);
-        rockTexture = assets.get(AssetController.METEOROS);
+        missileTexture = assets.get(AssetController.MISSIL_TEXTURE);
+        rockTexture = assets.get(AssetController.METEOROS_TEXTURE);
 
         spriteBatch = new SpriteBatch();
         viewport = new FitViewport(8, 5);
